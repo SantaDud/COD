@@ -1,0 +1,35 @@
+.head{
+    background-image: url(https://pl.neduet.edu.pk/images/headerbar.jpg);
+    background-repeat: repeat-x;
+}
+
+.main-background{
+    background-image: url('../images/backkground.jpg');
+    background-size: cover;
+}
+
+.border-radius{
+    border-radius: 2rem;
+}
+
+.login-bg-image{
+    background-image: url(https://pl.neduet.edu.pk/images/reddot.jpg);
+    background-repeat: repeat;
+}
+
+.bg-grey{
+    background-color: #f0f0f0;
+}
+
+.fs-7{
+    font-size: 0.9rem;
+}
+
+.mlr-3{
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.captcha{
+    background-image: radial-gradient(#000, red);
+}

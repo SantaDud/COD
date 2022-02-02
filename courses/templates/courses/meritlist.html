@@ -1,0 +1,115 @@
+{% load static %}
+
+<html>
+<style>
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Calibri', Arial, Helvetica, sans-serif;
+}
+.logo {
+    padding-left: 10%;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+.undergrad {
+    font-size: 24px;
+}
+.header {
+    background-color: rgb(194, 59, 35);
+    color: white;
+    display: flex;
+}
+      
+marquee{
+          
+            color: black;
+            font-family: italic;
+            background-color: rgb(254, 255, 221);
+}
+.heading {
+    margin-top: 25px;
+    padding-left: 50px;
+    line-height: 26px;
+    font-size: 32px;
+}
+.footer {
+    margin-top: 19rem;
+    background-color: rgb(36, 62, 73);
+    color: white;
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+h6 {
+    margin: 5px;
+    font-size: 12px;
+    font-family: Helvetica, sans-serif;
+}
+
+.first, .second {
+    width: 50%;
+}
+.mid {
+    
+    margin: 7%;
+    margin-top: 8%;
+    margin-bottom: 8%;
+    
+    display: flex;
+    justify-content: center;
+   
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+</style>
+      
+<body>
+    <div class="header">
+    <div class="logo">
+        <a href="{% url 'portal' %}"><img class="img-responsive" src="https://pl.neduet.edu.pk/undergrad/images/NED_Logo.png" width="128" height="129" /></a>
+    </div>
+    <font face="Calibri Light" size="6" class="heading">
+            NED UNIVERSITY OF ENGINEERING & TECHNOLOGY
+            <br>
+            <font class="undergrad">Undergraduate Students Interface</font>
+        </font>
+    </div>
+    <marquee> <h3>MERIT LIST HAS BEEN UPDATED</h3></marquee>
+<div class="mid">
+    <table>
+        <tr>
+          <th>Student Enrollment No</th>
+          <th>Name</th>
+          <th>Father's Name</th>
+          <th>Roll No</th>
+          <th>CGPA</th>
+        </tr>
+        {% for std in students %}
+        <tr>
+          <td>{{std.student.username}}</td>
+          <td>{{std.student.first_name}} {{student.student.last_name}}</td>
+          <td>{{std.student.father_name}}</td>
+          <td>{{std.student.seat_no}}</td>
+          <td>{{std.student.cgpa}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+</div> 
+<div class="footer">
+    <div class="first"><h6>Powered by IT Department</h6></div>
+    <div class="second" align="right"><h6>Copyright 2017, NED University of Engineering & Technology. All Rights Reserved.</h6></div>
+</div>
+</body>
+</html>

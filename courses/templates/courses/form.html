@@ -1,0 +1,229 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COD Form</title>
+    <link rel="stylesheet" href="{% static 'courses/css/style.css' %}">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+    <section class="main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                    <div class="container">
+                        <a href="{% url 'portal' %}"><img src="{% static 'courses/images/logo.png' %}" alt="logo" width="100%"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cod">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                    <div class="container1">
+                        <img src="{% static 'courses/images/download.png' %}" alt="logo1" width="150px" height="150px" class="logo1">
+                        <h1 id= "heading1">NED UNIVERSITY OF ENGINEERING AND TECHNOLOGY</h1>
+                        <h3>APPLICATION FOR THE CHANGE OF ENGINEERING DISCIPLINE (COD)</h3><br>
+                        <h4 class="request">THE REGISTRAR <br>NED UNIVERSITY</h4><br>
+                        <form name="form1" method="post">
+                            {% csrf_token %}
+                            <p class="paragraph">
+                                I hearby request for the change of discipline for the Academic session
+                                <input id="session" class="academic" type="text" name="session" required><br><br>
+                                <label>a) Name:</label>
+                                <input type="text" id="name1" name="yourname" value='{{user.first_name}} {{user.last_name}}' class="academic name" maxlength="50" required><br><br>
+                                <label>b) Father's Name:</label>
+                                <input  id="name2"name="fathername" value='{{user.father_name}}' type="text" class="academic name" maxlength="50" required><br><br>
+                                <label>c) Particulars Of First Year (Spring Semester):</label><br><br>
+                                <label style="margin-left: 30px;">i) Admission Category No:</label>
+                                <input id="categoryno" type="text" class="academic" value='{{user.admission_category}}' maxlength="50" required>
+                                <label>described as </label>
+                                <input type="text" id="description" class="academic" maxlength="50" style="width: 50%;" required><br><br>
+                                <label style="margin-left: 30px;">ii) Batch:</label>
+                                <input id="batch" type="text" class="academic" value='{{user.batch}}' maxlength="4" style="width: 70px;" required>
+                                <label>iii) Discipline:</label>
+                                <input id="discipline" type="text" class="academic" value='{{user.dept.dept_name}}' maxlength="40" style="width: 120px;" required>
+                                <label>iv)Class Roll No:</label>
+                                <input id="rollno" type="text" class="academic" value='{{user.roll_no}}' maxlength="40" required>
+                                <label>v)Examination Seat No:</label>
+                                <input id="seatno" type="text" class="academic" value='{{user.seat_no}}' maxlength="40" required><br><br>
+                            </p>
+                            <p class="paragraph">
+                                I hereby undertake that <br><br>
+                                a) I am not admitted in the NED University as a nominee of a Nominating Agency/Body under any reserved category.<br>
+                                b) All above information is correct and any misrepresentation shall make me liable to face any action which
+                                the University deems fit.<br>
+                                c) If allowed Change of Discipline in the discipline of my choice I shall be bound to accept it. <br><br>
+                                <p class="right">
+                                    Yours Obediently<br><br>
+                                    <label>Signature of Applicant: </label>
+                                    <input type="text" class="academic" id="applicantsign">
+                                </p>
+                            </p>
+                            <h4 class="request"><strong><u>Declaration Of Father/Guardian</u></strong></h4>
+                            <p class="paragraph">
+                                I
+                                <input id="fathername" type="text" class="academic" value='{{user.father_name}}' placeholder="(Name of Father/Guardian)" required>
+                                do hereby state that I have no objection if my son /daughter/ward
+                                <input type="text" class="academic" id="Applicantname" value='{{user.first_name}} {{user.last_name}}' placeholder=" (Name of Applicant)" required>
+                                S/D/O
+                                <input id="applicant1name" type="text" class="academic" value='{{user.father_name}}' placeholder="(Name of Applicant's Father,if Signed by Guardian)" required>
+                                is allowed change<br>of discipline and that it will be binding on my son/daughter/ward to accept the discipline of his/her choice if offered under Change of Discipline. <br><br>
+                                <p class="right">
+                                    <label>Signature of Father/Guardian:</label>
+                                    <input id="fathersign" type="text" class="academic">
+                                </p>
+                            </p><br><br><br>
+                            <div class="last">
+                                <strong><h2>For Office Use</h2></strong> 
+                                <hr style="height: 2px;"/>
+                                <table>
+                                    <tr style="text-align: center;">
+                                        <td style="text-indent: 20px ;height: 100px">
+                                            Change of Discipline Allowed / Not Allowed
+                                        </td> 
+                                        <td style="text-indent: 20px;">
+                                            Subsequent of being allowed Change of Discipline, the applicant is admitted in the Department of
+                                            <input type="text" class="academic" id="newdept">
+                                            Engineering and is allotted new Roll no.
+                                            <input type="text" class="academic" id="newroll">
+                                        </td>
+                                    </tr><br>
+                                    <tr>
+                                        <td style="height: 100px;">
+                                            <strong>Signature Of Dean</strong><br>
+                                            <input type="text" class="academic" id="deansign"> 
+                                        </td>
+                                        <td style="height: 100px;">
+                                            <strong>Signature Of Deputy Registrar(Academic)</strong><br>
+                                            <input type="text" class="academic"id="registrarsign"> 
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="upload" >
+                                <h2 >Upload Documents</h2>
+                                <input type="file" id="file" name="transcript" accept=".txt,.doc,.pdf">(**Upload your Transcript**)<br><br>
+                                <input type="file" id="file" name="transcript" accept=".txt,.doc,.pdf">(**Upload your Bank Receipt**)
+                            </div>
+                            <button type="button" class="submit1" onclick="display1()">Preview Form</button>
+                            <input type="submit" name="submit" id="submit" class="submit1">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id='myModel' class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <section class="main">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                            <div class="container">
+                                <img src="{% static 'courses/images/logo.png' %}" alt="logo" width="100%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="cod">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                            <div class="container1">
+                                <img src="{% static 'courses/images/download.png' %}" alt="logo1" width="150px" height="150px" class="logo1">
+                                <h1 id= "heading1">NED UNIVERSITY OF ENGINEERING AND TECHNOLOGY</h1>
+                                <h3>APPLICATION FOR THE CHANGE OF ENGINEERING DISCIPLINE (COD)</h3><br>
+                                <h4 class="request">THE REGISTRAR<br>NED UNIVERSITY</h4><br>
+                                <p class="paragraph">
+                                    I hearby request for the change of discipline for the <span>Academic session</span>
+                                    <u><strong><span id="session1"></span></strong></u><br><br>
+                                    <span>a) Name:</span>
+                                    <u><strong><span id="studName"></span></strong></u><br><br>
+                                    <span>b) FatherName:</span>
+                                    <u><strong><span id="studFatherName"></span></strong></u><br><br>
+                                    <label>c) Particulars Of First Year (Spring Semester):</label><br><br>
+                                    <label style="margin-left: 30px;">i) Admission Category No:</label>
+                                    <u><strong><span id="studadmission"></span></strong></u>
+                                    <label>described as </label>
+                                    <u><strong><span id="studdescription"></span></strong></u><br><br>
+                                    <label style="margin-left: 30px;">ii) Batch : </label>
+                                    <u><strong><span id="studbatch"></span></strong></u>
+                                    <label>iii) Discipline:</label>
+                                    <u><strong><span id="studdiscipline"></span></strong></u>
+                                    <label>iv)Class Roll No:</label>
+                                    <u><strong><span id="studrollno"></span></strong></u>
+                                    <label>v)Examination Seat No:</label>
+                                    <u><strong><span id="studseatno"></span></strong></u><br><br>
+                                    <p class="paragraph">
+                                        I hereby undertake that<br><br>
+                                        a) I am not admitted in the NED University as a nominee of a Nominating Agency/Body under any reserved category.<br>
+                                        b) All above information is correct and any misrepresentation shall make me liable to face any action which
+                                        the University deems fit.<br>
+                                        c) If allowed Change of Discipline in the discipline of my choice I shall be bound to accept it.<br><br>
+                                        <p class="right">
+                                            Yours Obediently<br><br>
+                                            <label>Signature of Applicant:</label>
+                                            <u><strong><span id="studsign"></span></strong></u>
+                                        </p>
+                                    </p>
+                                </p>
+                                <h4 class="request"><strong><u>Declaration Of Father/Guardian</u></strong></h4>
+                                <p class="paragraph">
+                                    I
+                                    <u><strong><span id="studGuardianName"></span></strong></u>
+                                    do hereby state that I have no objection if my son /daughter/ward
+                                    <u><strong><span id="studApplicantName"></span></strong></u>
+                                    S/D/O
+                                    <u><strong><span id="studGuardian1Name"></span></strong></u>
+                                    is allowed change<br>of discipline and that it will be binding on my son/daughter/ward to accept the discipline of his/her choice if offered under Change of Discipline.<br><br><br>
+                                    <p class="right">
+                                        <label>Signature of Father/Guardian: </label>
+                                        <u><strong><span id="studGuardiansign"></span></strong></u>
+                                    </p>
+                                </p><br><br><br>
+                                <div class="last">
+                                    <strong><h2>For Office Use</h2></strong>
+                                    <hr style="height: 2px;"/>
+                                    <table>
+                                        <tr style="text-align: center;">
+                                            <td style="text-indent: 20px ;height: 100px">Change of Discipline Allowed / Not Allowed</td>
+                                            <td style="text-indent: 20px;">
+                                                Subsequent of being allowed Change of Discipline, the applicant is
+                                                admitted in the Department of
+                                                <u><strong><span id="studnewdept"></span></strong></u>
+                                                Engineering and is allotted new Roll no.
+                                                <u><strong><span id="studnewrollno"></span></strong></u>
+                                            </td>
+                                        </tr><br>
+                                        <tr>
+                                            <td style="height: 100px;">
+                                                <strong>Signature Of Dean</strong><br>
+                                                <u><strong><span id="dean1sign"></span></strong></u>
+                                            </td>
+                                            <td style="height: 100px;">
+                                                <strong>Signature Of Deputy Registrar(Academic)</strong><br>
+                                                <u><strong><span id="registrar1sign"></span></strong></u> 
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="{% static 'courses/js/app.js' %}"></script>
+</body>
+</html>

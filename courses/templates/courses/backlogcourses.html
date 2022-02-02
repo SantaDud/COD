@@ -1,0 +1,359 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COD Backlog Courses</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/595ee49d77.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="{% static 'courses/css/Backlog-courses.css' %}">
+</head>
+<body>
+  <div class="d-flex flex-column">
+    <div class="d-flex bg-danger w-100 justify-content-center text-white p-3">
+      <div>
+        <a href="{% url 'portal' %}"><img class="img-responsive" src="https://pl.neduet.edu.pk/undergrad/images/NED_Logo.png" width="128" height="129"/></a>
+      </div>
+      <h2 class="p-4">NED UNIVERSITY OF ENGINEERING & TECHNOLOGY<span class='nl'>Undergraduate Students Interface</span></h2>
+    </div>
+    <div class="p-5 d-flex flex-column">
+      <div class="d-flex">
+        <h2>Backlog Courses For COD Students</h2>
+      </div>
+      <form method="post">
+        {% csrf_token %}
+        <div class='d-flex pt-5 justify-content-evenly'>
+          <div>
+            <label for='current-dept'>From</label>
+            <select id='current-dept' name='from-dept'>
+              <option>Select a department</option>
+              {% for dept in depts %}
+                <option value='{{dept.pk}}'>{{dept.dept_name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div>
+            <label for='changed-dept'>To</label>
+            <select id='changed-dept' name='to-dept'>
+              <option>Select a department</option>
+              {% for dept in depts %}
+                <option value='{{dept.pk}}'>{{dept.dept_name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-color">Submit</button>
+          </div>
+        </div>
+      </form>
+      <div class='d-flex justify-content-center'>
+        <table>
+          <tbody>
+            <tr class="header">
+              <th colspan="8">Courses To Be Studied</th>
+            </tr>
+            <tr>
+              <td colspan="4">
+                <table>
+                  <tbody>
+                    <tr>
+                      <th colspan="4">Spring Semester</th>
+                    </tr>
+                    <tr>
+                      <th>Course Code</th>
+                      <th>Course Title</th>
+                      <th colspan="2">Credit Hours</th>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <th>Th</th>
+                      <th>Pr</th>                      
+                    </tr>
+                    {% if courses == "" %}
+                        <tr>
+                          <td>Null</td>
+                          <td>Null</td>
+                          <td>Null</td>
+                          <td>Null</td>
+                        </tr>
+                        <tr>
+                          <td>Null</td>
+                          <td>Null</td>
+                          <td>Null</td>
+                          <td>Null</td>
+                        </tr>
+                        <tr>
+                          <td>Null</td>
+                          <td>Null</td>
+                          <td>Null</td>
+                          <td>Null</td>
+                        </tr>
+                        <tr>
+                          <td>Null</td>
+                          <td>Null</td>
+                          <td>Null</td>
+                          <td>Null</td>
+                        </tr>
+                    {% else %}
+                      {% if course.course1.semester == "S" %}
+                        <tr>
+                          <td>{{courses.course1.course_code}}</td>
+                          <td>{{courses.course1.course_name}}</td>
+                          <td>{{courses.course1.theory_hours}}</td>
+                          <td>{{courses.course1.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course2.semester == "S" %}
+                        <tr>
+                          <td>{{courses.course2.course_code}}</td>
+                          <td>{{courses.course2.course_name}}</td>
+                          <td>{{courses.course2.theory_hours}}</td>
+                          <td>{{courses.course2.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course3.semester == "S" %}
+                        <tr>
+                          <td>{{courses.course3.course_code}}</td>
+                          <td>{{courses.course3.course_name}}</td>
+                          <td>{{courses.course3.theory_hours}}</td>
+                          <td>{{courses.course3.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course4.semester == "S" %}
+                        <tr>
+                          <td>{{courses.course4.course_code}}</td>
+                          <td>{{courses.course4.course_name}}</td>
+                          <td>{{courses.course4.theory_hours}}</td>
+                          <td>{{courses.course4.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course5.semester == "S" %}
+                        <tr>
+                          <td>{{courses.course5.course_code}}</td>
+                          <td>{{courses.course5.course_name}}</td>
+                          <td>{{courses.course5.theory_hours}}</td>
+                          <td>{{courses.course5.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course6.semester == "S" %}
+                        <tr>
+                          <td>{{courses.course6.course_code}}</td>
+                          <td>{{courses.course6.course_name}}</td>
+                          <td>{{courses.course6.theory_hours}}</td>
+                          <td>{{courses.course6.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course7.semester == "S" %}
+                        <tr>
+                          <td>{{courses.course7.course_code}}</td>
+                          <td>{{courses.course7.course_name}}</td>
+                          <td>{{courses.course7.theory_hours}}</td>
+                          <td>{{courses.course7.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course8.semester == "S" %}
+                        <tr>
+                          <td>{{courses.course8.course_code}}</td>
+                          <td>{{courses.course8.course_name}}</td>
+                          <td>{{courses.course8.theory_hours}}</td>
+                          <td>{{courses.course8.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course9.semester == "S" %}
+                        <tr>
+                          <td>{{courses.course9.course_code}}</td>
+                          <td>{{courses.course9.course_name}}</td>
+                          <td>{{courses.course9.theory_hours}}</td>
+                          <td>{{courses.course9.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course10.semester == "S" %}
+                        <tr>
+                          <td>{{courses.course10.course_code}}</td>
+                          <td>{{courses.course10.course_name}}</td>
+                          <td>{{courses.course10.theory_hours}}</td>
+                          <td>{{courses.course10.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course11.semester == "S" %}
+                        <tr>
+                          <td>{{courses.course11.course_code}}</td>
+                          <td>{{courses.course11.course_name}}</td>
+                          <td>{{courses.course11.theory_hours}}</td>
+                          <td>{{courses.course11.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course12.semester == "S" %}
+                        <tr>
+                          <td>{{courses.course12.course_code}}</td>
+                          <td>{{courses.course12.course_name}}</td>
+                          <td>{{courses.course12.theory_hours}}</td>
+                          <td>{{courses.course12.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                    {% endif %}
+                  </tbody>
+                </table>
+              </td>
+              <td colspan="4">
+                <table>
+                  <tbody>
+                    <tr>
+                      <th colspan="4">Fall Semester</th>
+                    </tr>
+                    <tr>
+                      <th>Course Code</th>
+                      <th>Course Title</th>
+                      <th colspan="2">Credit Hours</th>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <th>Th</th>
+                      <th>Pr</th>                      
+                    </tr>
+                    {% if courses == "" %}
+                        <tr>
+                          <td>Null</td>
+                          <td>Null</td>
+                          <td>Null</td>
+                          <td>Null</td>
+                        </tr>
+                        <tr>
+                          <td>Null</td>
+                          <td>Null</td>
+                          <td>Null</td>
+                          <td>Null</td>
+                        </tr>
+                        <tr>
+                          <td>Null</td>
+                          <td>Null</td>
+                          <td>Null</td>
+                          <td>Null</td>
+                        </tr>
+                        <tr>
+                          <td>Null</td>
+                          <td>Null</td>
+                          <td>Null</td>
+                          <td>Null</td>
+                        </tr>
+                    {% else %}
+                      {% if course.course1.semester == "F" %}
+                        <tr>
+                          <td>{{courses.course1.course_code}}</td>
+                          <td>{{courses.course1.course_name}}</td>
+                          <td>{{courses.course1.theory_hours}}</td>
+                          <td>{{courses.course1.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course2.semester == "F" %}
+                        <tr>
+                          <td>{{courses.course2.course_code}}</td>
+                          <td>{{courses.course2.course_name}}</td>
+                          <td>{{courses.course2.theory_hours}}</td>
+                          <td>{{courses.course2.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course3.semester == "F" %}
+                        <tr>
+                          <td>{{courses.course3.course_code}}</td>
+                          <td>{{courses.course3.course_name}}</td>
+                          <td>{{courses.course3.theory_hours}}</td>
+                          <td>{{courses.course3.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course4.semester == "F" %}
+                        <tr>
+                          <td>{{courses.course4.course_code}}</td>
+                          <td>{{courses.course4.course_name}}</td>
+                          <td>{{courses.course4.theory_hours}}</td>
+                          <td>{{courses.course4.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course5.semester == "F" %}
+                        <tr>
+                          <td>{{courses.course5.course_code}}</td>
+                          <td>{{courses.course5.course_name}}</td>
+                          <td>{{courses.course5.theory_hours}}</td>
+                          <td>{{courses.course5.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course6.semester == "F" %}
+                        <tr>
+                          <td>{{courses.course6.course_code}}</td>
+                          <td>{{courses.course6.course_name}}</td>
+                          <td>{{courses.course6.theory_hours}}</td>
+                          <td>{{courses.course6.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course7.semester == "F" %}
+                        <tr>
+                          <td>{{courses.course7.course_code}}</td>
+                          <td>{{courses.course7.course_name}}</td>
+                          <td>{{courses.course7.theory_hours}}</td>
+                          <td>{{courses.course7.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course8.semester == "F" %}
+                        <tr>
+                          <td>{{courses.course8.course_code}}</td>
+                          <td>{{courses.course8.course_name}}</td>
+                          <td>{{courses.course8.theory_hours}}</td>
+                          <td>{{courses.course8.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course9.semester == "F" %}
+                        <tr>
+                          <td>{{courses.course9.course_code}}</td>
+                          <td>{{courses.course9.course_name}}</td>
+                          <td>{{courses.course9.theory_hours}}</td>
+                          <td>{{courses.course9.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course10.semester == "F" %}
+                        <tr>
+                          <td>{{courses.course10.course_code}}</td>
+                          <td>{{courses.course10.course_name}}</td>
+                          <td>{{courses.course10.theory_hours}}</td>
+                          <td>{{courses.course10.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course11.semester == "F" %}
+                        <tr>
+                          <td>{{courses.course11.course_code}}</td>
+                          <td>{{courses.course11.course_name}}</td>
+                          <td>{{courses.course11.theory_hours}}</td>
+                          <td>{{courses.course11.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if courses.course12.semester == "F" %}
+                        <tr>
+                          <td>{{courses.course12.course_code}}</td>
+                          <td>{{courses.course12.course_name}}</td>
+                          <td>{{courses.course12.theory_hours}}</td>
+                          <td>{{courses.course12.practical_hours}}</td>
+                        </tr>
+                      {% endif %}
+                    {% endif %}
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <footer class="d-flex justify-content-evenly align-items-center bg-dark p-4 mt-5">
+      <a href='https://www.neduet.edu.pk/' class="text-decoration-none text-warning"><i class="fas fa-home"></i> NEDUET</a>
+      <a href='https://mail2.neduet.edu.pk/' class="text-decoration-none text-warning"><i class="fas fa-envelope"></i> Email</a>
+      <a href='https://www.neduet.edu.pk/institutional_policies' class="text-decoration-none text-warning"><i class="fas fa-list"></i> Institutional Policies</a>
+      <a href='https://www.neduet.edu.pk/quality_policy' class="text-decoration-none text-warning "><i class="fas fa-list-alt"></i> Quality Policy</a>
+    </footer>
+  </div>
+</body>
+</html>

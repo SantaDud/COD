@@ -1,0 +1,87 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'users/css/index.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="d-flex flex-column justify-content-center">
+        <header class="head h-25">
+            <div class="d-flex justify-content-center">
+                <img src="https://pl.neduet.edu.pk/images/logohead.png" alt="NED Logo">
+            </div>
+        </header>
+        <div class="d-flex main-background h-75 justify-content-center p-5">
+            <div class="d-flex flex-column bg-white p-2 border-radius w-auto">
+                <div class="bg-danger login-bg-image border-radius mb-3 p-2 d-flex justify-content-center">
+                    <img src="https://pl.neduet.edu.pk/images/portallogin.png" alt="NED Portal Login">
+                </div>
+                <h1 class="text-danger fs-3 mlr-3">Undergraduate <i class="fas fa-graduation-cap"></i></h1>
+                <div class="bg-grey d-flex justify-content-end p-2 mlr-3">
+                    <a href=# class="text-decoration-none text-primary">Recover Password</a>
+                    &nbsp;|&nbsp;
+                    <a href=# class="text-decoration-none text-success">Notices</a>
+                </div>
+                <div class="form m-3">
+                    <form method='post' action="{% url 'login' %}">
+                        <div class="d-flex justify-content-center flex-column">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <div class="text-primary fs-7">(Password is case-sensitive.)</div>
+                            <label for="image-code" class="requiredField text-primary mt-3"><i class="fas fa-image"></i> Image Code</label>
+                            <input type="text" class="textinput textInput form-control" name="image-code" required pattern="3bUTL5x">
+                            <div class="captcha text-warning text-center mt-3 rounded-3" style="font-size: 2rem;">3 b UT L 5x</div>
+                            <input class="btn btn-danger mt-3 w-auto align-self-center" type="submit" value='Login'>
+                        </div>
+                    </form>
+                </div>
+                <div class="emails d-flex flex-column justify-content-center p-2 fs-7">
+                    <div class="text-danger align-self-center">
+                        For Registration issues: <a href="mailto:registration.helpdesk@neduet.edu.pk" class="text-primary text-decoration-none">registration.helpdesk@neduet.edu.pk</a>
+                    </div>
+                    <div class="text-danger align-self-center">
+                        For GSuite issues: <a href="mailto:onlineclasses@cloud.neduet.edu.pk" class="text-primary text-decoration-none">onlineclasses@cloud.neduet.edu.pk</a>
+                    </div>
+                    <div class="text-danger align-self-center">
+                        For USMS Password: <a href="mailto:portaladmin@neduet.edu.pk" class="text-primary text-decoration-none">portaladmin@neduet.edu.pk</a>
+                    </div>
+                </div>
+                <div class="align-self-center fs-7 fw-bolder">
+                    Powered by IT Department
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-evenly bg-dark p-4 ">
+            <div>
+                <a class="text-warning fs-5 fw-bolder text-decoration-none" href="https://www.neduet.edu.pk/"><i class="fas fa-home"></i> NEDUET</a>
+            </div>
+            <div>
+                <a class="text-warning fs-5 fw-bolder text-decoration-none" href="https://mail2.neduet.edu.pk/"><i class="fas fa-envelope"></i> Email</a>
+            </div>
+            <div>
+                <a class="text-warning fs-5 fw-bolder text-decoration-none" href="https://www.neduet.edu.pk/institutional_policies"><i class="fas fa-list"></i> Institutional Policies</a>
+            </div>
+            <div>
+                <a class="text-warning fs-5 fw-bolder text-decoration-none" href="https://www.neduet.edu.pk/quality_policy"><i class="fas fa-list-alt"></i> Quality Policy</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            labels = document.getElementsByTagName("label");
+            labels[0].innerHTML = "<i class='fas fa-user'></i> Student ID";
+            labels[0].className = "requiredField text-primary";
+            labels[1].innerHTML = '<i class="fas fa-lock"></i> Password';
+            labels[1].className = "requiredField text-primary mt-3";
+        })
+    </script>
+</body>
+</html>

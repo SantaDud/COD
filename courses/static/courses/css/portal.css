@@ -1,0 +1,104 @@
+/*general*/
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Calibri', Arial, Helvetica, sans-serif;
+}
+/*general*/
+
+/*header*/
+.header {
+    background-color: rgb(194, 59, 35);
+    color: white;
+    display: flex;
+}
+
+.logo {
+    padding-left: 10%;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.heading {
+    margin-top: 25px;
+    padding-left: 50px;
+    line-height: 26px;
+    font-size: 32px;
+}
+
+.undergrad {
+    font-size: 24px;
+}
+/*header*/
+
+/*portal*/
+.portal {
+    border: 2px rgb(194, 59, 35) solid;
+    background-color: rgb(245, 245, 245);
+    margin: 7%;
+    margin-top: 8%;
+    margin-bottom: 8%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+}
+
+.welcome {
+    font-family: 'Calibri Light', Arial, Helvetica, sans-serif;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 33px;
+}
+
+a {
+    color: rgb(74, 74, 252);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(57, 57, 134);
+    text-decoration: underline;
+}
+
+.password {
+    text-align: right;
+    margin-top: 5px;
+    padding-right: 0px;
+    font-size: 20px;
+}
+
+.text {
+    color: rgb(87, 87, 87);
+    padding-top: 15px;
+    padding-left: 5%;
+    line-height: 45px;
+    text-align: left;
+}
+
+.dropdown-toggle:hover {
+    text-decoration: none;
+}
+/*portal*/
+
+/*footer*/
+.footer {
+    background-color: rgb(36, 62, 73);
+    color: white;
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+h6 {
+    margin: 5px;
+    font-size: 12px;
+    font-family: Helvetica, sans-serif;
+}
+
+.first, .second {
+    width: 50%;
+}
+/*footer*/

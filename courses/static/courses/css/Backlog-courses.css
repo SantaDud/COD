@@ -1,0 +1,23 @@
+.nl::before{
+    content: '\a';
+    white-space: pre;
+}
+
+.btn-color{
+    background-color: rgb(199, 16, 16);
+    color:#fff;
+}
+
+th, td, thead, tbody, table, tr{
+    text-align: center;
+}
+
+table{
+    border-collapse: separate;
+    border-spacing: 10px;
+    border-width: 10px;
+}
+
+.h5-5{
+    font-size: 18px;
+}

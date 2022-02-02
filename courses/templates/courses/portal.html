@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undergraduate Semester Registration - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'courses/css/portal.css' %}"></link>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <style>
+        .nl::before{
+            content: '\a';
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+    <!--header-->
+    <div class="d-flex bg-danger w-100 justify-content-center text-white p-3">
+        <div>
+          <a href="{% url 'portal' %}"><img class="img-responsive" src="https://pl.neduet.edu.pk/undergrad/images/NED_Logo.png" width="128" height="129"/></a>
+        </div>
+        <h2 class="p-4">NED UNIVERSITY OF ENGINEERING & TECHNOLOGY<span class='nl'>Undergraduate Students Interface</span></h2>
+      </div>
+    <!--header-->
+
+    <!--portal-->
+    <div>
+        <div class="portal">
+            <div class="center">
+            <div class="password"><a href="#">Change Password</a> &nbsp; <a href="{% url 'logout' %}">Logout</a></div>
+            <div class="welcome"><font class="welcome">WELCOME TO STUDENTS - DASHBOARD</font></div>
+            <div><a href="#">Student Online Classes Undertaking/ GSuite Credentials</a></div>
+            <div class="text">
+                Phase-I : Semester Registration
+                <br>
+                Phase-II : Backlog Course Registration
+                <br>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    Phase-III : COD Registration
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" href="{% url 'coursedetails' %}">Departmental Course List</a></li>
+                      <li><a class="dropdown-item" href="{% url 'backlogcourses' %}">Comparative Course List</a></li>
+                      <li><a class="dropdown-item" href="{% url 'form' %}">Application Form</a></li>
+                      <li><a class="dropdown-item" href="{% url 'meritlist' %}">Merit List</a></li>
+                    </ul>
+                  </div>
+                <a href="#">Fall 2021: Registered Courses(Backlog Attendance If Any)</a>
+                <br>
+                Fall 2021: Regular Courses' Attendance <a href="#">[Download]</a>
+                <br>
+                Progressive Transcript <a href="#">[Download]</a>
+                <br>
+                Academics Feedback
+                <br>
+                Admit Card
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--portal-->
+
+    <!--footer-->
+    <div class="footer">
+        <div class="first"><h6>Powered by IT Department</h6></div>
+        <div class="second" align="right"><h6>Copyright 2017, NED University of Engineering & Technology. All Rights Reserved.</h6></div>
+    </div>
+    <!--footer-->
+</body>
+</html>
